@@ -1,36 +1,96 @@
-
+var iselected;
 
 function vertGuideLeft(_verticalValueLeft) {
-    var verticalValue = (activeDocument.width - activeDocument.width)+_verticalValueLeft;
-    verticalGuide(verticalValue);
+    
+    if (selectionCheck(activeDocument)) {
+        iselected= app.activeDocument.selection.bounds;
+    
+        for (i=0; i < iselected.length; i++) {
+        iselected[i] = parseInt(iselected[i]);
+        }
+        verticalGuide(iselected[0]+_verticalValueLeft);
+    }
+    else {
+        var verticalValue = (activeDocument.width - activeDocument.width)+_verticalValueLeft;
+        verticalGuide(verticalValue);
+        }
 }
 
 function vertGuideCenter(_verticalValueCenter) {
+        if (selectionCheck(activeDocument)) {
+        iselected= app.activeDocument.selection.bounds;
+    
+        for (i=0; i < iselected.length; i++) {
+        iselected[i] = parseInt(iselected[i]);
+        }
+        verticalGuide((iselected[2]-iselected[0])/2+iselected[0]+_verticalValueCenter);
+    }
+    else {
     var verticalValue = (activeDocument.width / 2)+_verticalValueCenter;
     verticalGuide(verticalValue);
+        }
 }
 
 function vertGuideRight(_verticalValueRight) {
-    var verticalValue = activeDocument.width - _verticalValueRight;
-    verticalGuide(verticalValue);
+        if (selectionCheck(activeDocument)) {
+        iselected= app.activeDocument.selection.bounds;
+    
+        for (i=0; i < iselected.length; i++) {
+        iselected[i] = parseInt(iselected[i]);
+        }
+        verticalGuide(iselected[2]-_verticalValueRight);
+    }
+    else {
+        var verticalValue = activeDocument.width - _verticalValueRight;
+        verticalGuide(verticalValue);
+    }
 }
 
 
 function horGuideTop(_horizontalValueTop) {
+        if (selectionCheck(activeDocument)) {
+        iselected= app.activeDocument.selection.bounds;
+    
+        for (i=0; i < iselected.length; i++) {
+        iselected[i] = parseInt(iselected[i]);
+        }
+        horizontalGuide(iselected[1]+_horizontalValueTop);
+    }
+    else {
     var horizontalValue = (activeDocument.height - activeDocument.height)+_horizontalValueTop;
     horizontalGuide(horizontalValue);
+        }
 }
 
 function horGuideCenter(_horizontalValueCenter) {
+    if (selectionCheck(activeDocument)) {
+        iselected= app.activeDocument.selection.bounds;
+    
+        for (i=0; i < iselected.length; i++) {
+        iselected[i] = parseInt(iselected[i]);
+        }
+        horizontalGuide((iselected[3]-iselected[1])/2+iselected[1]+_horizontalValueCenter);
+    }
+    else {
     var horizontalValue = (activeDocument.height / 2)+_horizontalValueCenter;
     horizontalGuide(horizontalValue);
+        }
 }
 function horGuideBottom(_horizontalValueBottom) {
     var horizontalValue = activeDocument.height - _horizontalValueBottom;
     horizontalGuide(horizontalValue);
 }
 
-
+function selectionCheck(doc) {
+    var selectionstatus = false;
+    var historystate = doc.activeHistoryState;
+    doc.selection.deselect();
+    if (historystate != doc.activeHistoryState) {
+        selectionstatus = true;
+        doc.activeHistoryState = historystate;
+    }
+    return selectionstatus;
+}
 
 function verticalGuide(_verticalValue) {
    
