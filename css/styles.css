@@ -1,0 +1,95 @@
+/*Your styles*/
+
+ body {
+    margin: 10px;
+}
+
+
+#content {
+    margin-right:auto;
+    margin-left:auto;
+    vertical-align:middle;
+    width:100%;
+}
+
+
+#btn_setGuide{
+    width: 100%;
+}
+
+#upperbtnrow{
+    margin-bottom: 15px;
+}
+.input-row{
+    margin-bottom: 5px;
+}
+.quickset-btn {
+    width: 49%;
+     height: 50px;
+}
+.custom-input{
+    font-size: 10px;
+    color: aqua;
+    background-color: #1e1e1e;
+    width: 32%;
+    
+	margin-left: 0%;
+    padding-left: 20px;
+    background-position: 0.2rem  center;
+    background-repeat:no-repeat;
+    background-size:12px;
+}
+.custom-input:focus, .custom-input:active {
+    color:aquamarine;
+}
+
+#fromLeft{
+    background-image:url(../icons/from-left.png);
+}
+#fromCenterV{
+    background-image:url(../icons/from-center-v.png);
+}
+#fromRight{
+    background-image:url(../icons/from-right.png);
+}
+
+#fromTop{
+    background-image:url(../icons/from-top.png);
+}
+#fromCenterH{
+    background-image:url(../icons/from-center-h.png);
+}
+#fromBottom{
+    background-image:url(../icons/from-bottom.png);
+}
+
+
+/*
+Those classes will be edited at runtime with values specified
+by the settings of the CC application
+*/
+.hostFontColor{}
+.hostFontFamily{}
+.hostFontSize{}
+
+/*font family, color and size*/
+.hostFont{}
+/*background color*/
+.hostBgd{}
+/*lighter background color*/
+.hostBgdLight{}
+/*darker background color*/
+.hostBgdDark{}
+/*background color and font*/
+.hostElt{}
+
+
+.hostButton{
+    border:1px solid;
+    border-radius:2px;
+    height:20px;
+    vertical-align:bottom;
+    font-family:inherit;
+    color:inherit;
+    font-size:inherit;
+}
