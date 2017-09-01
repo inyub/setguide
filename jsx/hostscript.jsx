@@ -23,7 +23,7 @@ function vertGuideCenter(_verticalValueCenter) {
         for (i=0; i < iselected.length; i++) {
         iselected[i] = parseInt(iselected[i]);
         }
-        verticalGuide((iselected[2]-iselected[0])/2+iselected[0]-_verticalValueCenter);
+        verticalGuide((iselected[2]-iselected[0])/2+iselected[0]+_verticalValueCenter);
     }
     else {
     var verticalValue = (activeDocument.width / 2)+_verticalValueCenter;
@@ -83,7 +83,7 @@ function horGuideBottom(_horizontalValueBottom) {
         for (i=0; i < iselected.length; i++) {
         iselected[i] = parseInt(iselected[i]);
         }
-        horizontalGuide(iselected[1]-_horizontalValueBottom);
+        horizontalGuide(iselected[3]-_horizontalValueBottom);
     }
     else {
     var horizontalValue = activeDocument.height - _horizontalValueBottom;
