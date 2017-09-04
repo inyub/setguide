@@ -1,32 +1,84 @@
 /*Your styles*/
 
  body {
-    margin: 10px;
+    width: 100%;
+    margin: 0px;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+#head-content{
+padding-top: 10px;
+}
+#quick-access{
+    background-color: #252525;
+
+    padding: 5px;
+    margin: inherit;
+}
+#divider {
+    position: relative;
+    width: 100%;
+	border-top: 1px solid #545454;
+	border-bottom: 1px solid #3c3c3c;
+}
+#content {
+    padding: 10px;
+    vertical-align:middle;
+    text-align: center;
+
 }
 
 
-#content {
+#btn_setGuide{    
+    width: 95%;
+}
+
+.btnrow{
+    margin-bottom: 10px;
+    text-align: center;
     margin-right:auto;
     margin-left:auto;
     vertical-align:middle;
-    width:100%;
-}
-
-
-#btn_setGuide{
-    width: 100%;
-}
-
-#upperbtnrow{
-    margin-bottom: 15px;
 }
 .input-row{
+    margin-top: 5px;
     margin-bottom: 5px;
 }
+
 .quickset-btn {
-    width: 49%;
-     height: 50px;
+    width: 30px;
+    height: 30px;
+    margin: 1%;
+    background-position: center;
+    background-repeat:no-repeat;
+    background-size:18px;
 }
+#btn_left {
+    background-image: url(../icons/from-left.png);
+}
+#btn_center_h {
+    background-image: url(../icons/from-center-h.png);
+}
+#btn_right {
+    background-image: url(../icons/from-right.png);
+}
+
+#btn_top {
+    background-image: url(../icons/from-top.png);
+}
+#btn_center_v {
+    background-image: url(../icons/from-center-v.png);
+}
+#btn_bottom {
+    background-image: url(../icons/from-bottom.png);
+}
+#btn_clearGuide {
+    background-image: url(../icons/clear.png);
+}
+#set-btn {
+    margin-top: 10px;
+}
+
 .custom-input{
     font-size: 10px;
     color: aqua;
@@ -92,4 +144,17 @@ by the settings of the CC application
     font-family:inherit;
     color:inherit;
     font-size:inherit;
+}
+
+
+/* BOOTSTRAP */
+.tooltip {
+	display:none;
+	position:absolute;
+	border:1px solid #333;
+	background-color:#161616;
+	border-radius:5px;
+	padding:10px;
+	color:#fff;
+	font-size:12px Arial;
 }

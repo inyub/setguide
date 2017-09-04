@@ -5,18 +5,33 @@
         
 <link rel="stylesheet" href="css/topcoat-desktop-dark.min.css"/>
 <link  id="hostStyle" rel="stylesheet" href="css/styles.css"/>
+<script src="js/libs/jquery-3.2.1.min.js"></script>
+<script type="text/javascript">
+
+</script>    
 
 <title></title>
 </head>
 
 <body class="hostElt">
+    <div id="head-content">
+        <div id="divider"></div>
+        <div class="btnrow" id="quick-access">
+            <button id="btn_left" class="quickset-btn topcoat-button--large hostFontSize masterTooltip" title="Left Border"></button>   
+            <button id="btn_center_v" class="quickset-btn topcoat-button--large hostFontSize masterTooltip" title="Vertical Center"></button> 
+            <button id="btn_right" class="quickset-btn topcoat-button--large hostFontSize masterTooltip" title="Right Border"></button>   
 
+            <button id="btn_top" class="quickset-btn topcoat-button--large hostFontSize masterTooltip" title="Top Border"></button>
+            <button id="btn_center_h" class="quickset-btn topcoat-button--large hostFontSize masterTooltip" title="Horizontal Center"></button>   
+            <button id="btn_bottom" class="quickset-btn topcoat-button--large hostFontSize masterTooltip" title="Bottom Border"></button> 
+
+             <button id="btn_clearGuide" class="quickset-btn topcoat-button--large hostFontSize masterTooltip" title="Clear Guides"></button> 
+        </div> 
+        <div id="divider"></div>
+    </div>
     <div id="content">        
         
-        <div id="upperbtnrow">
-            <button id="btn_center_h" class="quickset-btn topcoat-button--large hostFontSize">Horizontal Center</button>     
-             <button id="btn_center_v" class="quickset-btn topcoat-button--large hostFontSize">Vertical Center</button>  
-        </div> 
+        
         
         <div class="input-row">
             
@@ -37,9 +52,10 @@
             
         </div> 
         
-        <div>
+        <div class="btnrow" id="set-btn">
             <button id="btn_setGuide" class="topcoat-button--large hostFontSize">Set Guide</button>                
         </div>   
+                
         
     </div>
     
@@ -48,9 +64,11 @@
     <span class="debuglink" id="debug">Debug</span>
     <span class="debuglink" id="sources">Sources</span>
      -->
-    <script src="js/libs/CSInterface.js"></script>
-    <script src="js/libs/jquery-2.0.2.min.js"></script>
 
+    <script src="js/libs/CSInterface.js"></script>
+
+    
+    
     <script src="js/themeManager.js"></script>
     <script src="js/main.js"></script>
 

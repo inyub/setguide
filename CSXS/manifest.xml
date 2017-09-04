@@ -59,15 +59,15 @@
 				</Lifecycle>
 				<UI>
 					<Type>Panel</Type>
-					<Menu>Set Guideline</Menu>
+					<Menu>Guide Helper</Menu>
 					<Geometry>
 						<Size>
 							<Height>180</Height>
-							<Width>180</Width>
+							<Width>250</Width>
 						</Size>
-                    <!--<MinSize>
-                            <Height>550</Height>
-                            <Width>400</Width>
+        <!--            <MinSize>
+                            <Height>150</Height>
+                            <Width>250</Width>
                         </MinSize>
                         <MaxSize>
                             <Height>550</Height>

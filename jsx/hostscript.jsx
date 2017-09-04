@@ -1,7 +1,12 @@
 var iselected;
 
+//================================================================================================
+//====================================== BTN FUNCTIONS ===========================================
+//================================================================================================
+// If Block for Selection, Else for Document Dimensions
+
+//GUIDE FROM LEFT + - VALUE
 function vertGuideLeft(_verticalValueLeft) {
-    
     if (selectionCheck(activeDocument)) {
         iselected= app.activeDocument.selection.bounds;
     
@@ -16,8 +21,9 @@ function vertGuideLeft(_verticalValueLeft) {
         }
 }
 
+//GUIDE FROM VERTICAL CENTER + - VALUE
 function vertGuideCenter(_verticalValueCenter) {
-        if (selectionCheck(activeDocument)) {
+    if (selectionCheck(activeDocument)) {
         iselected= app.activeDocument.selection.bounds;
     
         for (i=0; i < iselected.length; i++) {
@@ -31,8 +37,9 @@ function vertGuideCenter(_verticalValueCenter) {
         }
 }
 
+//GUIDE FROM RIGHT + - VALUE
 function vertGuideRight(_verticalValueRight) {
-        if (selectionCheck(activeDocument)) {
+    if (selectionCheck(activeDocument)) {
         iselected= app.activeDocument.selection.bounds;
     
         for (i=0; i < iselected.length; i++) {
@@ -46,9 +53,9 @@ function vertGuideRight(_verticalValueRight) {
     }
 }
 
-
+//GUIDE FROM TOP + - VALUE
 function horGuideTop(_horizontalValueTop) {
-        if (selectionCheck(activeDocument)) {
+    if (selectionCheck(activeDocument)) {
         iselected= app.activeDocument.selection.bounds;
     
         for (i=0; i < iselected.length; i++) {
@@ -62,6 +69,7 @@ function horGuideTop(_horizontalValueTop) {
         }
 }
 
+//GUIDE FROM HORIZONTAL CENTER + - VALUE
 function horGuideCenter(_horizontalValueCenter) {
     if (selectionCheck(activeDocument)) {
         iselected= app.activeDocument.selection.bounds;
@@ -76,6 +84,8 @@ function horGuideCenter(_horizontalValueCenter) {
     horizontalGuide(horizontalValue);
         }
 }
+
+//GUIDE FROM BOTTOM + - VALUE
 function horGuideBottom(_horizontalValueBottom) {
             if (selectionCheck(activeDocument)) {
         iselected= app.activeDocument.selection.bounds;
@@ -91,6 +101,11 @@ function horGuideBottom(_horizontalValueBottom) {
         }
 }
 
+//================================================================================================
+//====================================== RAW FUNCTIONS ===========================================
+//================================================================================================
+
+//Selection Check is needed to use the Selection if there is one, or else Document Dimensions
 function selectionCheck(doc) {
     var selectionstatus = false;
     var historystate = doc.activeHistoryState;
@@ -175,4 +190,15 @@ function horizontalGuide(_horizontalValue) {
     var idguideTargetCanvas = stringIDToTypeID( "guideTargetCanvas" );
     desc2450.putEnumerated( idguideTarget, idguideTarget, idguideTargetCanvas );
 executeAction( idMk, desc2450, DialogModes.NO );
+}
+
+function clearAllGuides(){
+        var confirmClearAllGuides= confirm("Do you really want to clear all guides?");
+    if (confirmClearAllGuides== true){
+        var idclearAllGuides = stringIDToTypeID( "clearAllGuides" );
+        executeAction( idclearAllGuides, undefined, DialogModes.NO );
+    }else{
+        //alert("ok");
+    }
+   
 }

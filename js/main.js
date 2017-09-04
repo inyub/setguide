@@ -89,18 +89,30 @@
         var verticalValue;
         var horizontalValue;
         
-        
+        //SET CENTER GUIDES
+        $("#btn_top").click(function () {
+            csInterface.evalScript('horGuideTop(0)');
+        });
         $("#btn_center_h").click(function () {
             csInterface.evalScript('horGuideCenter(0)');
+        });
+        $("#btn_bottom").click(function () {
+            csInterface.evalScript('horGuideBottom(0)');
+        });
+        
+        $("#btn_left").click(function () {
+            csInterface.evalScript('vertGuideLeft(0)');
         });
          $("#btn_center_v").click(function () {
             csInterface.evalScript('vertGuideCenter(0)');
         });
+        $("#btn_right").click(function () {
+            csInterface.evalScript('vertGuideRight(0)');
+        });
                 
         
-                
-
-        
+            
+        //SET GUIDE WITH VALUES
         $("#btn_setGuide").click(function () {
             
             if ($('#fromLeft').val().length > 0) {
@@ -133,8 +145,37 @@
                  csInterface.evalScript('horGuideBottom(' + horizontalValue + ')');
             }
 
-
         });
+        
+        //CLEAR GUIDES
+         $("#btn_clearGuide").click(function () {
+            csInterface.evalScript('clearAllGuides()');
+        });
+        
+        //TOOLTIP
+        $(document).ready(function() {
+        // Tooltip only Text
+        $('.masterTooltip').hover(function(){
+                // Hover over code
+                var title = $(this).attr('title');
+                $(this).data('tipText', title).removeAttr('title');
+                $('<p class="tooltip"></p>')
+                .text(title)
+                .appendTo('body')
+                .fadeIn('slow');
+        }, function() {
+                // Hover out code
+                $(this).attr('title', $(this).data('tipText'));
+                $('.tooltip').remove();
+        }).mousemove(function(e) {
+                var mousex = e.pageX - 20; //Get X coordinates
+                var mousey = e.pageY + 10; //Get Y coordinates
+                $('.tooltip')
+                .css({ top: mousey, left: mousex })
+        });
+        });
+        
+        
     }
         
     init();
