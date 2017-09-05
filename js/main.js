@@ -11,7 +11,7 @@
                 
         themeManager.init();
         
-        $('#fromLeft').keypress(function() {
+        $('#fromLeft').keypress(function () {
             if ($(this).val().length >= 0) {
                 $('#fromCenterV').val('');
                 $('#fromRight').val('');
@@ -20,10 +20,10 @@
                 $('#fromCenterH').val('');
                 $('#fromBottom').val('');
             }
-        })
+        });
         
         
-        $('#fromCenterV').keypress(function() {
+        $('#fromCenterV').keypress(function () {
             if ($(this).val().length >= 0) {
                 $('#fromLeft').val('');
                 $('#fromRight').val('');
@@ -32,9 +32,9 @@
                 $('#fromCenterH').val('');
                 $('#fromBottom').val('');
             }
-        })
+        });
         
-        $('#fromRight').keypress(function() {
+        $('#fromRight').keypress(function () {
             if ($(this).val().length >= 0) {
                 //$('#fromLeft').val('');
                 $('#fromLeft').val('');
@@ -44,9 +44,9 @@
                 $('#fromCenterH').val('');
                 $('#fromBottom').val('');
             }
-        })
+        });
         
-        $('#fromTop').keypress(function() {
+        $('#fromTop').keypress(function () {
             if ($(this).val().length >= 0) {
                 
                 $('#fromLeft').val('');
@@ -57,9 +57,9 @@
                 $('#fromCenterH').val('');
                 $('#fromBottom').val('');
             }
-        })
+        });
         
-        $('#fromCenterH').keypress(function() {
+        $('#fromCenterH').keypress(function () {
             if ($(this).val().length >= 0) {
                 
                 $('#fromLeft').val('');
@@ -70,9 +70,9 @@
                 //$('#fromCenterH').val('');
                 $('#fromBottom').val('');
             }
-        })
+        });
         
-        $('#fromBottom').keypress(function() {
+        $('#fromBottom').keypress(function () {
             if ($(this).val().length >= 0) {
                 
                 $('#fromLeft').val('');
@@ -83,7 +83,7 @@
                 $('#fromCenterH').val('');
                 //$('#fromBottom').val('');
             }
-        })
+        });
         
         
         var verticalValue;
@@ -103,7 +103,7 @@
         $("#btn_left").click(function () {
             csInterface.evalScript('vertGuideLeft(0)');
         });
-         $("#btn_center_v").click(function () {
+        $("#btn_center_v").click(function () {
             csInterface.evalScript('vertGuideCenter(0)');
         });
         $("#btn_right").click(function () {
@@ -117,62 +117,68 @@
             
             if ($('#fromLeft').val().length > 0) {
                 verticalValue = document.getElementById("fromLeft").value;
-                 csInterface.evalScript('vertGuideLeft(' + verticalValue + ')');
+                csInterface.evalScript('vertGuideLeft(' + verticalValue + ')');
             }
             
             if ($('#fromCenterV').val().length > 0) {
                 verticalValue = document.getElementById("fromCenterV").value;
-                 csInterface.evalScript('vertGuideCenter(' + verticalValue + ')');
+                csInterface.evalScript('vertGuideCenter(' + verticalValue + ')');
             }
             
             if ($('#fromRight').val().length > 0) {
                 verticalValue = document.getElementById("fromRight").value;
-                 csInterface.evalScript('vertGuideRight(' + verticalValue + ')');
+                csInterface.evalScript('vertGuideRight(' + verticalValue + ')');
             }
             
             if ($('#fromTop').val().length > 0) {
                 horizontalValue = document.getElementById("fromTop").value;
-                 csInterface.evalScript('horGuideTop(' + horizontalValue + ')');
+                csInterface.evalScript('horGuideTop(' + horizontalValue + ')');
             }
             
             if ($('#fromCenterH').val().length > 0) {
                 horizontalValue = document.getElementById("fromCenterH").value;
-                 csInterface.evalScript('horGuideCenter(' + horizontalValue + ')');
+                csInterface.evalScript('horGuideCenter(' + horizontalValue + ')');
             }
             
             if ($('#fromBottom').val().length > 0) {
                 horizontalValue = document.getElementById("fromBottom").value;
-                 csInterface.evalScript('horGuideBottom(' + horizontalValue + ')');
+                csInterface.evalScript('horGuideBottom(' + horizontalValue + ')');
             }
 
         });
         
         //CLEAR GUIDES
-         $("#btn_clearGuide").click(function () {
+        $("#btn_clearGuide").click(function () {
             csInterface.evalScript('clearAllGuides()');
         });
         
+        //SET GRID
+        $("#btn_grid_h").click(function () {
+            var gridH = document.getElementById("grid_h").value;
+            csInterface.evalScript('createGridH(' + gridH +')');
+        });
+        
         //TOOLTIP
-        $(document).ready(function() {
+        $(document).ready(function () {
         // Tooltip only Text
-        $('.masterTooltip').hover(function(){
+            $('.masterTooltip').hover(function () {
                 // Hover over code
                 var title = $(this).attr('title');
                 $(this).data('tipText', title).removeAttr('title');
                 $('<p class="tooltip"></p>')
-                .text(title)
-                .appendTo('body')
-                .fadeIn('slow');
-        }, function() {
+                    .text(title)
+                    .appendTo('body')
+                    .fadeIn('slow');
+            }, function () {
                 // Hover out code
                 $(this).attr('title', $(this).data('tipText'));
                 $('.tooltip').remove();
-        }).mousemove(function(e) {
+            }).mousemove(function (e) {
                 var mousex = e.pageX - 20; //Get X coordinates
                 var mousey = e.pageY + 10; //Get Y coordinates
                 $('.tooltip')
-                .css({ top: mousey, left: mousex })
-        });
+                    .css({ top: mousey, left: mousex });
+            });
         });
         
         

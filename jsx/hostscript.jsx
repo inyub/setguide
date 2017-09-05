@@ -101,6 +101,36 @@ function horGuideBottom(_horizontalValueBottom) {
         }
 }
 
+//GRIDS
+function createGridH(gridH){
+    
+    
+    if (selectionCheck(activeDocument)) {
+        
+        iselected= app.activeDocument.selection.bounds;
+        var selectorientation = iselected[3]-iselected[1];
+        var spacer = selectorientation/gridH;
+        var startingGuide = spacer-spacer;
+    
+        for (i=0; i < iselected.length; i++) {
+        iselected[i] = parseInt(iselected[i]);
+        }
+        for(i=0; i<=gridH; i++) {
+            horizontalGuide(iselected[1]+startingGuide);
+            startingGuide = startingGuide+spacer;
+        }
+        
+    }
+    else {
+        var spacer = activeDocument.height/gridH;
+        var startingGuide = spacer-spacer;
+        for(i=0; i<=gridH; i++) {
+            horizontalGuide(startingGuide);
+            startingGuide = startingGuide+spacer;
+        }
+    }
+}
+
 //================================================================================================
 //====================================== RAW FUNCTIONS ===========================================
 //================================================================================================
