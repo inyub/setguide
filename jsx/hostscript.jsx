@@ -107,80 +107,45 @@ function createGridH(gridH, margin){
     
     if (selectionCheck(activeDocument)) {
         
-        iselected= app.activeDocument.selection.bounds;
+         iselected= app.activeDocument.selection.bounds;
         var selectorientation = iselected[3]-iselected[1];
-        var spacer = selectorientation/gridH;
+        var spacer = (selectorientation-(gridH+1)*margin)/gridH;
         var startingGuide = spacer-spacer;
     
-        /*for (i=0; i < iselected.length; i++) {
-            iselected[i] = parseInt(iselected[i]);
-        }*/
+        for (i=0; i < iselected.length; i++) {
+        iselected[i] = parseInt(iselected[i]);
+        }
+        
         for(i=0; i<=gridH; i++) {
-           
-            
-            //if Margin
             if (margin > 0) {
-                if (startingGuide == 0) {
-                    startingGuide = iselected[1]+startingGuide+margin;
-                    horizontalGuide(startingGuide);
-                    startingGuide = startingGuide-margin;
-                    startingGuide = startingGuide+spacer;
-                    //alert("First"+ startingGuide);
-                }
-                else if (startingGuide == iselected[3]) {
-                    startingGuide = startingGuide-margin;
-                    horizontalGuide(startingGuide);
-                }
-                else {
-                    startingGuide = startingGuide-margin/2;
-                    horizontalGuide(startingGuide);
-                    startingGuide = startingGuide+margin;
-                    horizontalGuide(startingGuide);
-                    startingGuide = startingGuide - margin/2;
-                    startingGuide = startingGuide+spacer;
-                    //alert("loop "+ startingGuide)
-                }
-            }
-            else {
+                startingGuide = startingGuide+margin;
                 horizontalGuide(iselected[1]+startingGuide);
-                startingGuide = startingGuide+spacer;
-            }
-            
-            
+                 }
+            startingGuide = startingGuide+spacer;
+            horizontalGuide(iselected[1]+startingGuide);
+             if (startingGuide >= selectorientation-margin) {
+                    return;
+                }
         }
         
     }
     else {
-        var spacer = activeDocument.height/gridH;
+        var spacer = (activeDocument.height-(gridH+1)*margin)/gridH;
         var startingGuide = spacer-spacer;
         for(i=0; i<=gridH; i++) {
             
             
              if (margin > 0) {
-                if (startingGuide == 0) {
+                               
+                if (startingGuide >= activeDocument.height-margin) {
+                    return;
+                } else {
                     startingGuide = startingGuide+margin;
-                    horizontalGuide(startingGuide);
-                    startingGuide = startingGuide-margin;
-                    startingGuide = startingGuide+spacer;
-                    //alert("First"+ startingGuide);
-                }
-                else if (startingGuide == activeDocument.height) {
-                    startingGuide = startingGuide-margin;
-                    horizontalGuide(startingGuide);
-                }
-                else {
-                    startingGuide = startingGuide-margin/2;
-                    horizontalGuide(startingGuide);
-                    startingGuide = startingGuide+margin;
-                    horizontalGuide(startingGuide);
-                    startingGuide = startingGuide - margin/2;
-                    startingGuide = startingGuide+spacer;
-                    //alert("loop "+ startingGuide)
-                }
-                
-                
-            }
-            else {
+                    horizontalGuide(startingGuide);//row start
+                   startingGuide = startingGuide+spacer;
+                    horizontalGuide(startingGuide);//row end
+                }               
+            } else {
                 horizontalGuide(startingGuide);
                 startingGuide = startingGuide+spacer;
             }
