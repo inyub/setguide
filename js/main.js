@@ -85,6 +85,14 @@
             }
         });
         
+        $('#grid_h').keypress(function () {
+            if ($(this).val().length >= 0) {
+                $('#grid_margin').toggleClass('hidden');
+            } else {
+                $('#grid_margin').toggleClass('hidden');
+            }
+        });
+        
         
         var verticalValue;
         var horizontalValue;
@@ -152,10 +160,11 @@
             csInterface.evalScript('clearAllGuides()');
         });
         
-        //SET GRID
-        $("#btn_grid_h").click(function () {
+        //SET ROW
+        $("#btn_setGuide").click(function () {
             var gridH = document.getElementById("grid_h").value;
-            csInterface.evalScript('createGridH(' + gridH +')');
+            var gridMargin = document.getElementById("grid_margin").value;
+            csInterface.evalScript('createGridH(' + gridH + ', ' + gridMargin + ')');
         });
         
         //TOOLTIP

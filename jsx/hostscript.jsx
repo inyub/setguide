@@ -102,7 +102,7 @@ function horGuideBottom(_horizontalValueBottom) {
 }
 
 //GRIDS
-function createGridH(gridH){
+function createGridH(gridH, margin){
     
     
     if (selectionCheck(activeDocument)) {
@@ -112,12 +112,41 @@ function createGridH(gridH){
         var spacer = selectorientation/gridH;
         var startingGuide = spacer-spacer;
     
-        for (i=0; i < iselected.length; i++) {
-        iselected[i] = parseInt(iselected[i]);
-        }
+        /*for (i=0; i < iselected.length; i++) {
+            iselected[i] = parseInt(iselected[i]);
+        }*/
         for(i=0; i<=gridH; i++) {
-            horizontalGuide(iselected[1]+startingGuide);
-            startingGuide = startingGuide+spacer;
+           
+            
+            //if Margin
+            if (margin > 0) {
+                if (startingGuide == 0) {
+                    startingGuide = iselected[1]+startingGuide+margin;
+                    horizontalGuide(startingGuide);
+                    startingGuide = startingGuide-margin;
+                    startingGuide = startingGuide+spacer;
+                    //alert("First"+ startingGuide);
+                }
+                else if (startingGuide == iselected[3]) {
+                    startingGuide = startingGuide-margin;
+                    horizontalGuide(startingGuide);
+                }
+                else {
+                    startingGuide = startingGuide-margin/2;
+                    horizontalGuide(startingGuide);
+                    startingGuide = startingGuide+margin;
+                    horizontalGuide(startingGuide);
+                    startingGuide = startingGuide - margin/2;
+                    startingGuide = startingGuide+spacer;
+                    //alert("loop "+ startingGuide)
+                }
+            }
+            else {
+                horizontalGuide(iselected[1]+startingGuide);
+                startingGuide = startingGuide+spacer;
+            }
+            
+            
         }
         
     }
@@ -125,8 +154,38 @@ function createGridH(gridH){
         var spacer = activeDocument.height/gridH;
         var startingGuide = spacer-spacer;
         for(i=0; i<=gridH; i++) {
-            horizontalGuide(startingGuide);
-            startingGuide = startingGuide+spacer;
+            
+            
+             if (margin > 0) {
+                if (startingGuide == 0) {
+                    startingGuide = startingGuide+margin;
+                    horizontalGuide(startingGuide);
+                    startingGuide = startingGuide-margin;
+                    startingGuide = startingGuide+spacer;
+                    //alert("First"+ startingGuide);
+                }
+                else if (startingGuide == activeDocument.height) {
+                    startingGuide = startingGuide-margin;
+                    horizontalGuide(startingGuide);
+                }
+                else {
+                    startingGuide = startingGuide-margin/2;
+                    horizontalGuide(startingGuide);
+                    startingGuide = startingGuide+margin;
+                    horizontalGuide(startingGuide);
+                    startingGuide = startingGuide - margin/2;
+                    startingGuide = startingGuide+spacer;
+                    //alert("loop "+ startingGuide)
+                }
+                
+                
+            }
+            else {
+                horizontalGuide(startingGuide);
+                startingGuide = startingGuide+spacer;
+            }
+            
+            
         }
     }
 }

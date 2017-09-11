@@ -94,6 +94,13 @@ padding-top: 10px;
 .custom-input:focus, .custom-input:active {
     color:aquamarine;
 }
+#quick-access .custom-input {
+    width: 20%;
+    margin-top: 2px;
+}
+#quick-access .quickset-btn {
+    height: 20px;
+}
 
 #fromLeft{
     background-image:url(../icons/from-left.png);
@@ -115,6 +122,9 @@ padding-top: 10px;
     background-image:url(../icons/from-bottom.png);
 }
 
+.hidden {
+    visibility: hidden;
+}
 
 /*
 Those classes will be edited at runtime with values specified
