@@ -153,12 +153,12 @@ function createGridH(gridH, margin){
                             horizontalGuide(startingGuide);
                             return;
                 } else {
-                            horizontalGuide(startingGuide);//row end
+                            horizontalGuide(startingGuide);//Row Start
                             startingGuide = startingGuide+margin;
-                            horizontalGuide(startingGuide);//row start
-                           startingGuide = startingGuide+spacer;
-                           
-                }                
+                            horizontalGuide(startingGuide);//Row End
+                           startingGuide = startingGuide+spacer;                  
+                }
+                 
             } else {
                 horizontalGuide(startingGuide);
                 startingGuide = startingGuide+spacer;
@@ -186,14 +186,23 @@ function createGridV(gridV, margin){
         
         for(i=0; i<=gridV; i++) {
             if (margin > 0) {
-                startingGuide = startingGuide+margin;
-                verticalGuide(iselected[0]+startingGuide);
-                 }
-            startingGuide = startingGuide+spacer;
-            verticalGuide(iselected[0]+startingGuide);
-             if (startingGuide >= selectorientation-margin) {
+                if (startingGuide >= selectorientation-margin) {
+                    verticalGuide(iselected[0]+startingGuide);
+                    startingGuide = startingGuide+margin;
+                    verticalGuide(iselected[0]+startingGuide);
                     return;
-                }
+                } else {
+                    verticalGuide(iselected[0]+startingGuide);
+                    startingGuide = startingGuide+margin;
+                    verticalGuide(iselected[0]+startingGuide);
+                    startingGuide = startingGuide+spacer;
+                   }
+                
+            } else {
+                verticalGuide(iselected[0]+startingGuide); 
+                startingGuide = startingGuide+spacer;    
+            }
+    
         }
         
     }
@@ -206,12 +215,15 @@ function createGridV(gridV, margin){
              if (margin > 0) {
                                
                 if (startingGuide >= activeDocument.width-margin) {
+                    verticalGuide(startingGuide);
+                    startingGuide = startingGuide+margin;
+                    verticalGuide(startingGuide);
                     return;
                 } else {
-                    startingGuide = startingGuide+margin;
-                    verticalGuide(startingGuide);//row start
+                   verticalGuide(startingGuide);//Col Start
+                   startingGuide = startingGuide+margin;
+                   verticalGuide(startingGuide);//Col End
                    startingGuide = startingGuide+spacer;
-                    verticalGuide(startingGuide);//row end
                 }               
             } else {
                 verticalGuide(startingGuide);
