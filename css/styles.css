@@ -11,7 +11,7 @@ padding-top: 10px;
 }
 #quick-access{
     background-color: #252525;
-
+    
     padding: 5px;
     margin: inherit;
 }
@@ -47,7 +47,7 @@ padding-top: 10px;
 
 .quickset-btn {
     width: 30px;
-    height: 30px;
+    height: 25px !important;
     margin: 1%;
     background-position: center;
     background-repeat:no-repeat;
@@ -120,6 +120,12 @@ padding-top: 10px;
 }
 #fromBottom{
     background-image:url(../icons/from-bottom.png);
+}
+#grid_v {
+    background-image:url(../icons/cols.png);
+}
+#grid_h {
+    background-image:url(../icons/rows.png);
 }
 
 .hidden {

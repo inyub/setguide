@@ -85,13 +85,7 @@
             }
         });
         
-        $('#grid_h').keypress(function () {
-            if ($(this).val().length >= 0) {
-                $('#grid_margin').toggleClass('hidden');
-            } else {
-                $('#grid_margin').toggleClass('hidden');
-            }
-        });
+        
         
         
         var verticalValue;
@@ -165,6 +159,13 @@
             var gridH = document.getElementById("grid_h").value;
             var gridMargin = document.getElementById("grid_margin").value;
             csInterface.evalScript('createGridH(' + gridH + ', ' + gridMargin + ')');
+        });
+        
+        //SET COL
+        $("#btn_setGuide").click(function () {
+            var gridV = document.getElementById("grid_v").value;
+            var gridMargin = document.getElementById("grid_margin").value;
+            csInterface.evalScript('createGridV(' + gridV + ', ' + gridMargin + ')');
         });
         
         //TOOLTIP

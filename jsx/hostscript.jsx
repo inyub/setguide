@@ -101,7 +101,7 @@ function horGuideBottom(_horizontalValueBottom) {
         }
 }
 
-//GRIDS
+//ROWS
 function createGridH(gridH, margin){
     
     
@@ -118,14 +118,24 @@ function createGridH(gridH, margin){
         
         for(i=0; i<=gridH; i++) {
             if (margin > 0) {
-                startingGuide = startingGuide+margin;
-                horizontalGuide(iselected[1]+startingGuide);
-                 }
-            startingGuide = startingGuide+spacer;
-            horizontalGuide(iselected[1]+startingGuide);
-             if (startingGuide >= selectorientation-margin) {
+                if (startingGuide >= selectorientation-margin) {
+                    horizontalGuide(iselected[1]+startingGuide);
+                    startingGuide = startingGuide+margin;
+                    horizontalGuide(iselected[1]+startingGuide);
                     return;
-                }
+                } else {
+                    horizontalGuide(iselected[1]+startingGuide);
+                    startingGuide = startingGuide+margin;
+                    horizontalGuide(iselected[1]+startingGuide);
+                    startingGuide = startingGuide+spacer;
+                   }
+                
+            } else {
+                horizontalGuide(iselected[1]+startingGuide); 
+                startingGuide = startingGuide+spacer;    
+            }
+            
+             
         }
         
     }
@@ -138,15 +148,73 @@ function createGridH(gridH, margin){
              if (margin > 0) {
                                
                 if (startingGuide >= activeDocument.height-margin) {
+                            horizontalGuide(startingGuide);
+                            startingGuide = startingGuide+margin;
+                            horizontalGuide(startingGuide);
+                            return;
+                } else {
+                            horizontalGuide(startingGuide);//row end
+                            startingGuide = startingGuide+margin;
+                            horizontalGuide(startingGuide);//row start
+                           startingGuide = startingGuide+spacer;
+                           
+                }                
+            } else {
+                horizontalGuide(startingGuide);
+                startingGuide = startingGuide+spacer;
+            }
+            
+            
+        }
+    }
+}
+
+// COLS
+function createGridV(gridV, margin){
+    
+    
+    if (selectionCheck(activeDocument)) {
+        
+         iselected= app.activeDocument.selection.bounds;
+        var selectorientation = iselected[2]-iselected[0];
+        var spacer = (selectorientation-(gridV+1)*margin)/gridV;
+        var startingGuide = spacer-spacer;
+    
+        for (i=0; i < iselected.length; i++) {
+        iselected[i] = parseInt(iselected[i]);
+        }
+        
+        for(i=0; i<=gridV; i++) {
+            if (margin > 0) {
+                startingGuide = startingGuide+margin;
+                verticalGuide(iselected[0]+startingGuide);
+                 }
+            startingGuide = startingGuide+spacer;
+            verticalGuide(iselected[0]+startingGuide);
+             if (startingGuide >= selectorientation-margin) {
+                    return;
+                }
+        }
+        
+    }
+    else {
+        var spacer = (activeDocument.width-(gridV+1)*margin)/gridV;
+        var startingGuide = spacer-spacer;
+        for(i=0; i<=gridV; i++) {
+            
+            
+             if (margin > 0) {
+                               
+                if (startingGuide >= activeDocument.width-margin) {
                     return;
                 } else {
                     startingGuide = startingGuide+margin;
-                    horizontalGuide(startingGuide);//row start
+                    verticalGuide(startingGuide);//row start
                    startingGuide = startingGuide+spacer;
-                    horizontalGuide(startingGuide);//row end
+                    verticalGuide(startingGuide);//row end
                 }               
             } else {
-                horizontalGuide(startingGuide);
+                verticalGuide(startingGuide);
                 startingGuide = startingGuide+spacer;
             }
             
