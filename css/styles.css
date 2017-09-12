@@ -127,6 +127,9 @@ padding-top: 10px;
 #grid_h {
     background-image:url(../icons/rows.png);
 }
+#grid_margin {
+    background-image:url(../icons/margin.png);
+}
 
 .hidden {
     visibility: hidden;
